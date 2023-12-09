@@ -30,8 +30,7 @@ class FingerprintingResultOk extends FingerprintingResult {
 }
 
 class FingerprintingResultErr extends FingerprintingResult {
-  final File file;
-  FingerprintingResultErr(this.file);
+  FingerprintingResultErr();
 }
 
 class ChromaprintApi {
@@ -65,7 +64,7 @@ class ChromaprintApi {
     res = nativeLibrary.chromaprint_start(
         _context, audioFormat.sampleRate, audioFormat.channels);
     if (res != 1) {
-      return FingerprintingResultErr(file);
+      return FingerprintingResultErr();
     }
 
     final frames = AllocatedAudioFrames(length: 8192 * 32, format: audioFormat);
@@ -81,7 +80,7 @@ class ChromaprintApi {
           readBuffer.pBuffer.cast<Int16>(),
           audioFormat.channels * result.frames);
       if (res != 1) {
-        return FingerprintingResultErr(file);
+        return FingerprintingResultErr();
       }
       length += result.frames;
       // if (length / (audioFormat.sampleRate) > 120.0) {
@@ -95,13 +94,13 @@ class ChromaprintApi {
 
     res = nativeLibrary.chromaprint_finish(_context);
     if (res != 1) {
-      return FingerprintingResultErr(file);
+      return FingerprintingResultErr();
     }
     Pointer<Pointer<Char>> fp = malloc.allocate(0);
 
     res = nativeLibrary.chromaprint_get_fingerprint(_context, fp);
     if (res != 1) {
-      return FingerprintingResultErr(file);
+      return FingerprintingResultErr();
     }
     String result = (fp.value.cast<Utf8>().toDartString());
     nativeLibrary.chromaprint_dealloc(fp.cast());
