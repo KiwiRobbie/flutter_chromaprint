@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_chromaprint (0.0.1):
+    - Flutter
+  - flutter_coast_audio_miniaudio (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_chromaprint (from `.symlinks/plugins/flutter_chromaprint/ios`)
+  - flutter_coast_audio_miniaudio (from `.symlinks/plugins/flutter_coast_audio_miniaudio/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_chromaprint:
+    :path: ".symlinks/plugins/flutter_chromaprint/ios"
+  flutter_coast_audio_miniaudio:
+    :path: ".symlinks/plugins/flutter_coast_audio_miniaudio/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_chromaprint: 1d0e1bf90a032db753dc4b00fb98b91c585fac4b
+  flutter_coast_audio_miniaudio: 1c9d5dcdecc97eaa4434d16214001d4924955498
+
+PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
+
+COCOAPODS: 1.12.1

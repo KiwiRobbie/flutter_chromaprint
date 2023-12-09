@@ -3,9 +3,12 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_chromaprint/flutter_chromaprint.dart';
+import 'dart:io';
 
 void main() {
-  DynamicLibrary.open('libchromaprint.so');
+      final executable = File(Platform.executable);
+      final lib = '${executable.parent.path}/Frameworks/chromaprint.framework/chromaprint';
+  DynamicLibrary.open(lib);
   runApp(MyApp());
 }
 

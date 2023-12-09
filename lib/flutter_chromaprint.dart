@@ -34,10 +34,22 @@ class FingerprintingResultErr extends FingerprintingResult {
 }
 
 class ChromaprintApi {
-  NativeLibrary nativeLibrary =
-      NativeLibrary(DynamicLibrary.open('libchromaprint.so'));
+  late NativeLibrary nativeLibrary;
+
+
   late Pointer<ChromaprintContextPrivate> _context;
   ChromaprintApi() {
+    if (Platform.isIOS) {
+      nativeLibrary=NativeLibrary(DynamicLibrary.open(
+        '${File(Platform.executable).parent.path}/Frameworks/chromaprint.framework/chromaprint'
+      ));
+    }
+    else if (Platform.isAndroid) {
+      nativeLibrary=NativeLibrary(DynamicLibrary.open(
+        'libchromaprint.so' 
+      ));
+
+    }
     int algorithm = ChromaprintAlgorithm.CHROMAPRINT_ALGORITHM_DEFAULT;
     _context = nativeLibrary.chromaprint_new(algorithm);
   }
