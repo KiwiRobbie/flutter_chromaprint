@@ -16,3 +16,46 @@ samples, guidance on mobile development, and a full API reference.
 The plugin project was generated without specifying the `--platforms` flag, no platforms are currently supported.
 To add platforms, run `flutter create -t plugin --platforms <platforms> .` in this directory.
 You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+
+
+# Building Chromaprint 
+## iOS
+- Clone repo 
+- Run CMake
+- Build XCode 
+- Copy the built chromaprint.framework into the `ios` folder
+
+1. Clone chromaprint from the acoustid repo:
+```sh
+git clone https://github.com/acoustid/chromaprint.git
+```
+
+2. Use CMake to create an XCode project:
+```sh
+cmake -G Xcode -B build \
+    -DCMAKE_SYSTEM_NAME=iOS \
+    -DCMAKE_Swift_COMPILER_FORCED=true \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
+    -DCMAKE_FRAMEWORK=true
+```
+
+3. Open the XCode projecet and build the chromaprint target 
+4. Copy the resulting `chromaprint.framework` folder into the `ios` folder of this plugin
+
+## Android
+1. Clone chromaprint from the `arm` branch of the acoustid repo:
+2. Insert this to the top of the CMakeLists.txt: 
+```cmake
+...
+```
+
+3. Run CMake: 
+```sh
+...
+```
+4. Run make: 
+```sh
+make
+```
+5. Copy `libchromaprint.so` to correct location in android folder. 
+
