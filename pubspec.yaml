@@ -4,13 +4,15 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=3.1.0-285.0.dev <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: ">=3.1.0-285.0.dev <4.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
   ffi: ^2.1.0
+  ffigen: ^9.0.1
   flutter:
     sdk: flutter
+  flutter_coast_audio_miniaudio: ^0.0.4
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
@@ -76,3 +78,9 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+
+ffigen:
+  output: "lib/chromaprint_native.g.dart"
+  headers:
+    entry-points:
+      - "include/chromaprint.h"
