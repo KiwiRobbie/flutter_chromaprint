@@ -59,7 +59,11 @@ set(KISSFFT_SOURCE_DIR ../vendor/kissfft)
 ```sh
 cmake -DCMAKE_TOOLCHAIN_FILE=$NDK_PATH/build/cmake/android.toolchain.cmake -DANDROID_NDK=$NDK_PATH -DANDROID_ABI=armeabi-v7a -DANDROID_PLATFORM=android-21 -DANDROID_STL=c++_shared -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=build
 ```
-Copy the resulting `libchromaprint.so` to the correct directory in `android/src/main/jniLibs`.
+4. Run make: 
+```sh
+make
+```
+5. Copy the resulting `libchromaprint.so` to the correct directory in `android/src/main/jniLibs`.
 libchromaprint.so
 ```
 android/src/main/jniLibs
@@ -84,10 +88,5 @@ android/src/main/jniLibs
     ├── libc++_shared.so
     └── libc++_static.a
 ```
-4. Repeat for each target arch. 
-4. Run make: 
-```sh
-make
-```
-5. Copy `libchromaprint.so` to correct location in android folder. 
 
+6. Repeat for each target arch.
